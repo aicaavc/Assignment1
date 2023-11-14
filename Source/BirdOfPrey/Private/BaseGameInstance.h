@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "BaseWeapon.h"
 #include "BaseGameInstance.generated.h"
 
 USTRUCT(BlueprintType)
@@ -16,7 +17,7 @@ public:
     FText Name;
 
     UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
-    TSubclassOf<AActor> BaseWeaponType;
+    TSubclassOf<ABaseWeapon> BaseWeaponType;
 
     UPROPERTY(BlueprintReadWrite, Category = "BirdOfPrey")
     USkeletalMesh* SkeletalMesh;
@@ -54,7 +55,7 @@ public:
     TArray<FSAgentInfo> PlayerAgentInfo;
 
     UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
-    void SetPlayerAgentInfoFor(int PlayerControllerID, FSAgentInfo& info);
+    void SetPlayerAgentInfoFor(int PlayerControllerID, FSAgentInfo info);
 
     UFUNCTION(BlueprintCallable, Category = "BirdOfPrey")
     FSAgentInfo& GetPlayerAgentInfoFor(int PlayerControllerID, bool &Result);
